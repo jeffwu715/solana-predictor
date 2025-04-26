@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Solana Price Predictor</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Solana Price Predictor</h1>
+        <form method="POST">
+            <label>Choose Input Method:</label><br>
+            <input type="radio" id="manual" name="m2choice" value="manual" checked>
+            <label for="manual">Manual Entry</label><br>
+            <input type="radio" id="live" name="m2choice" value="live">
+            <label for="live">Fetch Live (USA M2)</label><br><br>
+
+            <input type="number" step="any" name="m2manual" placeholder="Enter M2 value if manual" required><br><br>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction %}
+            <h2>Prediction (M2 = {{ prediction.m2_value }} Billion USD):</h2>
+            <ul>
+                <li>Base Case: ${{ prediction.base }}</li>
+                <li>Bearish Case: ${{ prediction.bearish }}</li>
+                <li>Bullish Case: ${{ prediction.bullish }}</li>
+            </ul>
+        {% endif %}
+    </div>
+</body>
+</html>
